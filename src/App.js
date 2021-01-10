@@ -1,24 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="time-container">
+        <h1 className="time">21:43</h1>
+        <p className="phrase">Mantenha o foco!</p>
+      </div>
+
+      <div className="buttons-container">
+        <button className="button reset">
+          RESET
+        </button>
+        <button className="button start">
+          START
+        </button>
+        <button className="button stop">
+          STOP
+        </button>
+      </div>
+
+      <div className="time-divisions-container">
+        <span className="time-division-item">
+          Foco - 25 min
+        </span>
+        <span className="time-division-item">
+          Break - 5 min
+        </span>
+        <span className="time-division-item">
+          Long break - 10 min
+        </span>
+      </div>
+    </>
   );
 }
 
