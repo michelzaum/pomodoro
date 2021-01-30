@@ -1,21 +1,49 @@
+import { useState } from 'react'
+
 import './App.css';
 
+const reset = () => {
+  console.log('reset')
+}
+
+const stop = () => {
+  console.log('stop')
+  clearInterval()
+}
+
 function App() {
+  let [minuto, setMinuto] = useState(25)
+  let [segundo, setSegundo] = useState(0)
+
+  function start() {
+    let count = 0
+    setInterval(() => {
+      if (count === 0) {
+        count = 60
+        setSegundo(count)
+        setMinuto(--minuto)
+      }
+      count--
+      setSegundo(count)
+      console.log(segundo)
+    }, 1000)
+  }
+
   return (
     <>
       <div className="time-container">
-        <h1 className="time">21:43</h1>
+        <h1 className="time">{`${minuto}:${String(segundo).padStart(2, '0')}`}</h1>
         <p className="phrase">Mantenha o foco!</p>
       </div>
 
       <div className="buttons-container">
-        <button className="button reset">
+        <button className="button reset" onClick={() => reset()}>
           RESET
         </button>
-        <button className="button start">
+        <button className="button start" onClick={() => start()}>
           START
         </button>
-        <button className="button stop">
+        <button className="button stop" onClick={() => stop()}>
           STOP
         </button>
       </div>
