@@ -8,7 +8,6 @@ const reset = () => {
 
 const stop = () => {
   console.log('stop')
-  clearInterval()
 }
 
 function App() {
@@ -25,14 +24,28 @@ function App() {
       }
       count--
       setSegundo(count)
-      console.log(segundo)
     }, 1000)
+  }
+
+  function setBreak() {
+    setMinuto(5)
+    setSegundo(0)
+  }
+
+  function setLongBreak() {
+    setMinuto(10)
+    setSegundo(0)
+  }
+
+  function setFocus() {
+    setMinuto(25)
+    setSegundo(0)
   }
 
   return (
     <>
       <div className="time-container">
-        <h1 className="time">{`${minuto}:${String(segundo).padStart(2, '0')}`}</h1>
+        <h1 className="time">{`${String(minuto).padStart('2', 0)}:${String(segundo).padStart(2, '0')}`}</h1>
         <p className="phrase">Mantenha o foco!</p>
       </div>
 
@@ -49,13 +62,13 @@ function App() {
       </div>
 
       <div className="time-divisions-container">
-        <span className="time-division-item">
+        <span className="time-division-item" onClick={() => setFocus()}>
           Foco - 25 min
         </span>
-        <span className="time-division-item">
+        <span className="time-division-item" onClick={() => setBreak()}>
           Break - 5 min
         </span>
-        <span className="time-division-item">
+        <span className="time-division-item" onClick={() => setLongBreak()}>
           Long break - 10 min
         </span>
       </div>
